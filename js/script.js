@@ -5,8 +5,7 @@
 
 const WeatherNow = (weather) => {
     const weatherDiv = document.getElementById("weather-main")
-    weatherDiv.innerHTML = `
-    <h1> Kokkolan Sää Tällä hetkellä</h1>
+    weatherDiv.innerHTML += `
     <img src="img/${weather.next_1_hours.summary.symbol_code}.svg" alt="kokkola weather symbol" width="100">
     <h3> Lämpötila: ${weather.instant.details.air_temperature}&#176</h3>
     <h3> Ilmankosteus: ${weather.instant.details.relative_humidity}%</h3>
@@ -16,10 +15,10 @@ const WeatherNow = (weather) => {
 }
 
 const sunriseSunset = (sunrise, sunset) => {
-    const sunInfoDiv = document.getElementById("sunrise")
+    const sunInfoDiv = document.getElementById("weather-main")
     const sunriseHMM = `${sunrise.toTimeString().substr(0,5)}`
     const sunsetHMM = `${sunset.toTimeString().substr(0,5)}`
-    sunInfoDiv.innerHTML = `
+    sunInfoDiv.innerHTML += `
     <h3>Aurinko nousee: ${sunriseHMM}</h3>
     <h3>Aurinko laskee: ${sunsetHMM}</h3>
     `

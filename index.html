@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kokkola sää</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div id="weather-main">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div id="title">
+        <div class="header">
+          <h1>Kokkolan sää</h1>
+        </div>
+            
+      </div>
+      <div class="main-weather-container bg-img">
+        <div id="weather-main" class="infos">
+            <h2>Sää tällä hetkellä:</h2>
+        </div>
+      </div>
+ 
+      <h1>Tuntiennuste</h1>
+      <div id="daily-forecast"></div>
+      <h1>Lähipäivien sääennuste</h1>
+      <div id="weekly-forecast"></div>
     </div>
-    <div id="sunrise">
-    </div>
-    <h1>Tuntiennuste</h1>
-    <div id="daily-forecast"></div>
-    <h1>Lähipäivien sääennuste</h1>
-    <div id="weekly-forecast"></div>
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>
