@@ -5,6 +5,13 @@
     color: rgb(125, 204, 204);
 }
 
+.weekly {
+    display: inline-block;
+    margin: 20px 10px;
+    text-align: center;
+    color: rgb(125, 204, 204);
+}
+
 h3, p {
     margin: 0;
 }

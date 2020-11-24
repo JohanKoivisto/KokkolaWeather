@@ -38,9 +38,17 @@ const dailyForecast = (weather) => {
     }
 }
 
-const weeklyForecast = (weather) => {
-    
+const weeklyForecast = (dayC, icon, weekday) => {
+    const weeklyDiv = document.getElementById("weekly-forecast")
+    weeklyDiv.innerHTML += `
+    <div class="weekly">
+        <h3>${weekday}
+        <div><img src="img/${icon}.svg" alt="kokkola weather symbol" width="50"></div>
+        <p>${dayC}&#176</p>
+    </div>`
 }
+
+
 
 ///// GET AND HANDLE DATA /////
 
@@ -53,6 +61,7 @@ const getWeather = async () => {
         console.log(weatherData.properties.timeseries)
         WeatherNow(currentWeather)
         dailyForecast(hoursForecast)
+        weeklyForecastSort(hoursForecast)
     } catch {
 
     }
@@ -74,6 +83,22 @@ const getSunset = async () => {
     } catch {
 
     }
+}
+
+const weeklyForecastSort = (weather) => {
+    weather.forEach(el => {
+        const time = new Date(el.time).getHours()
+        let dayTemp
+            if (time === 14) {
+                const day = new Date(el.time)
+                const weekday = day.toLocaleString("fi-FI", { weekday: "short" })
+                dayTemp = el.data.instant.details.air_temperature
+                icon = el.data.next_12_hours.summary.symbol_code
+                console.log(dayTemp, weekday)
+                weeklyForecast(dayTemp, icon, weekday)
+            }
+            
+    })
 }
 
 getWeather()
