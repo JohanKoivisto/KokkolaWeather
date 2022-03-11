@@ -1,53 +1,53 @@
 body {
-    background-color: #3498db;
-    font-family: 'Lato', sans-serif;
+  background-color: #3498db;
+  font-family: "Lato", sans-serif;
 }
 
 h1 {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color:#0065a4;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #0065a4;
 }
 
 h1:first-child {
-    border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
 }
 
 .main-container {
-    margin: auto;
-    margin-top: 10px;
-    max-width: 850px;
-    text-align: center;
-    background-color:#d5f4ff;
-    border-radius: 30px;
+  margin: auto;
+  margin-top: 10px;
+  max-width: 850px;
+  text-align: center;
+  background-color: #d5f4ff;
+  border-radius: 30px;
 }
 
-.weather
-
-.weather-side {
-    display: inline-block;
-    text-align: left;
-    padding-left: 30px;
+.weather .weather-side {
+  display: inline-block;
+  text-align: left;
+  padding-left: 30px;
 }
 
 .infos {
-    display: inline-block;
+  display: inline-block;
 }
 
-
 .daily {
-    display: inline-block;
-    margin: 20px 10px;
-    text-align: center;
+  display: inline-block;
+  margin: 20px 10px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .weekly {
-    display: inline-block;
-    margin: 20px 10px;
-    text-align: center;
-    color: rgb(125, 204, 204);
+  display: inline-block;
+  margin: 20px 10px;
+  text-align: center;
+  color: rgb(125, 204, 204);
 }
 
-h3, p {
-    margin: 0;
+h3,
+p {
+  margin: 0;
 }
+

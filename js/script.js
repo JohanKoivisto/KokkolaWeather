@@ -2,7 +2,7 @@
 // Weather API by Meteorologisk Institutt
 
 //// RENDER STUFFS ////
-
+///////////////////////
 const WeatherNow = (weather) => {
     const weatherDiv = document.getElementById("weather-main")
     weatherDiv.innerHTML += `
@@ -37,20 +37,20 @@ const dailyForecast = (weather) => {
     }
 }
 
-const weeklyForecast = (dayC, icon, weekday) => {
+const weeklyForecast = (warmest, coldest, icon, weekday) => {
     const weeklyDiv = document.getElementById("weekly-forecast")
     weeklyDiv.innerHTML += `
     <div class="weekly">
         <h3>${weekday}
         <div><img src="img/${icon}.svg" alt="kokkola weather symbol" width="50"></div>
-        <p>${dayC}&#176</p>
+        <p>${coldest}&#176/${warmest}&#176</p>
     </div>`
 }
 
 
 
 ///// GET AND HANDLE DATA /////
-
+///////////////////////////////
 const getWeather = async () => {
     try {
         const resWeather = await fetch("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=63.83&lon=23.13")
@@ -62,7 +62,7 @@ const getWeather = async () => {
         dailyForecast(hoursForecast)
         weeklyForecastSort(hoursForecast)
     } catch {
-
+        console.log("something went wrong");
     }
 }
 
@@ -80,25 +80,30 @@ const getSunset = async () => {
         sunriseSunset(sunrise, sunset)
         
     } catch {
-
+        console.log("something went wrong");
     }
 }
 
 const weeklyForecastSort = (weather) => {
+    let arr = []
     weather.forEach(el => {
         const time = new Date(el.time).getHours()
-        let dayTemp
+        arr.push(el.data.instant.details.air_temperature)
             if (time === 14) {
+                let warmestTemp = Math.max(...arr);
+                let coldestTemp = Math.min(...arr)
+                console.log(arr);
+                arr = []
                 const day = new Date(el.time)
                 const weekday = day.toLocaleString("fi-FI", { weekday: "short" })
-                dayTemp = el.data.instant.details.air_temperature
                 icon = el.data.next_12_hours.summary.symbol_code
-                console.log(dayTemp, weekday)
-                weeklyForecast(dayTemp, icon, weekday)
+                weeklyForecast(warmestTemp, coldestTemp, icon, weekday)
             }
             
     })
 }
+
+
 
 getWeather()
 getSunset();
